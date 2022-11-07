@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 from django.contrib.auth.base_user import BaseUserManager
@@ -40,11 +40,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     phone = models.IntegerField(unique=True)
     name = models.CharField(max_length=30)
-    dob = models.DateTimeField()
+    dob = models.DateTimeField(null=True)
     is_active = models.BooleanField(_('active'), default=True)
     profile_image = models.ImageField(
         upload_to='profile_images/', null=True, blank=True)
-    monthly_budget = models.IntegerField(max_length=30, blank=True)
+    monthly_budget = models.IntegerField(blank=True,null=True)
 
     objects = UserManager()
 

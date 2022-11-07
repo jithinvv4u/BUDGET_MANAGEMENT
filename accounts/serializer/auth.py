@@ -20,6 +20,8 @@ class LoginSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         """Overriding the create method."""
+        print(validated_data['phone_number'])
+        print(validated_data['password'])
         user = authenticate(
             phone_number=validated_data['phone_number'],
             password=validated_data['password'])

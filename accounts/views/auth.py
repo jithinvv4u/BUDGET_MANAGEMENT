@@ -6,7 +6,7 @@ from accounts.serializer import auth as auth_serializer
 class SignupViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = auth_serializer.SignupSerializer
-    http_method_names = ['get','post']
+    http_method_names = ['post']
 
 class loginViewSet(ModelViewSet):
     serializer_class = auth_serializer.LoginSerializer
