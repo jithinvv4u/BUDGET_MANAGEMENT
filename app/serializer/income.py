@@ -1,0 +1,11 @@
+from rest_framework import serializers
+from app.models import Income
+
+
+class IncomeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        """Meta info."""
+
+        model = Income
+        fields =['account_type','income_date','income_category','income_amount','income_note']
