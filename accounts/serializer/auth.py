@@ -9,7 +9,7 @@ class SignupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['name', 'phone', 'password']
+        fields = ['name', 'phone_number', 'password']
 
 
 class LoginSerializer(serializers.Serializer):
