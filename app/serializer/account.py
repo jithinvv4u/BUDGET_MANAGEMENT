@@ -10,7 +10,6 @@ class AccountSerializer(serializers.ModelSerializer):
         fields = ['account_name', 'account_inintial_amt', 'account_type']
 
     def save(self, **kwargs):
-        print(self.context['request'].user)
         kwargs['user'] = self.context['request'].user
         return super().save(**kwargs)
 

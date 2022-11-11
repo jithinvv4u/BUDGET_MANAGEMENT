@@ -9,3 +9,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
 
         model = Expense
         fields = ['account_type','expense_date','expense_category','expense_amount','expense_note']
+
+    def save(self, **kwargs):
+        kwargs['user'] = self.context['request'].user
+        return super().save(**kwargs)

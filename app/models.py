@@ -15,9 +15,9 @@ class Account(models.Model):
     account_inintial_amt = models.FloatField()
     account_type = models.CharField(
         max_length=30, choices=ACCOUNT_CHOICES, default='Saving')
-    
+
     def __str__(self):
-        return self.user.name
+        return self.account_type
 
 
 class Income(models.Model):
@@ -27,32 +27,36 @@ class Income(models.Model):
         ('Interest', 'Interest'),
         ('Returns', 'Returns'),
     )
-    
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    account_type = models.OneToOneField(Account, on_delete=models.CASCADE)
+    account_type = models.ForeignKey(
+        Account, on_delete=models.CASCADE, choices=Account.ACCOUNT_CHOICES)
     income_date = models.DateField()
     income_category = models.CharField(
         max_length=30, choices=INCOME_CHOICE, default='Salary')
     income_amount = models.FloatField()
     income_note = models.TextField(max_length=80)
-    
+
     def __str__(self):
-        return str(self.user)
-    
+        return self.account_type
+
     # def __str__(self):
     #     return self.account_type,self.user_id.name
 
 
 class Expense(models.Model):
     EXPENSE_CHOICE = (
-        ('Salary', 'Salary'),
-        ('Gift', 'Gift'),
-        ('Interest', 'Interest'),
-        ('Returns', 'Returns'),
+        ('Travel', 'Travel'),
+        ('Entertainment', 'Entertainment'),
+        ('Vehicle', 'Vehicle'),
+        ('Shopping', 'Shopping'),
+        ('Food', 'Food'),
+        ('Investment', 'Investment'),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    account_type = models.OneToOneField(Account, on_delete=models.CASCADE)
+    account_type = models.ForeignKey(
+        Account, on_delete=models.CASCADE, choices=Account.ACCOUNT_CHOICES)
     expense_date = models.DateField()
     expense_category = models.CharField(
         max_length=30, choices=EXPENSE_CHOICE, default='Salary')

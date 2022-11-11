@@ -9,11 +9,11 @@ class IncomeViewSet(ModelViewSet):
     # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = app_models.Income.objects.all()
     serializer_class = income_serializer.IncomeSerializer
-    http_method_names = ['patch', 'post']
+    http_method_names = ['post']
 
 class IncomeListViewSet(ModelViewSet):
     # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = app_models.Income.objects.all()
     serializer_class = income_serializer.IncomeSerializer
-    http_method_names = ['get']
+    http_method_names = ['get','patch']
     filterset_class = app_filters.IncomeFilter
