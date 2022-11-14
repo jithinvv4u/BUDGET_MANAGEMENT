@@ -11,6 +11,19 @@ class SignupSerializer(serializers.ModelSerializer):
         model = User
         fields = ['name', 'phone_number', 'password']
 
+    def create(self, validated_data):
+        user = super().create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+
+        return user
+
+    # def update(self, instance, validated_data):
+    #     if 'password' in validated_data.keys():
+    #         instance.set_password(validated_data['password'])
+    #         instance.save()
+    #     return super().update(instance, validated_data)
+
 
 class LoginSerializer(serializers.Serializer):
     """Serializer to login."""
@@ -20,8 +33,6 @@ class LoginSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         """Overriding the create method."""
-        print(validated_data['phone_number'])
-        print(validated_data['password'])
         user = authenticate(
             phone_number=validated_data['phone_number'],
             password=validated_data['password'])

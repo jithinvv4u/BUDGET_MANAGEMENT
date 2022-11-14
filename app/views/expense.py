@@ -6,13 +6,13 @@ from app import filters as app_filters
 
 
 class ExpenseViewSet(ModelViewSet):
-    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = app_models.Expense.objects.all()
     serializer_class = expense_serializer.ExpenseSerializer
     http_method_names = ['post']
 
 class ExpenseListViewSet(ModelViewSet):
-    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = app_models.Expense.objects.all()
     serializer_class = expense_serializer.ExpenseSerializer
     http_method_names = ['get','patch']

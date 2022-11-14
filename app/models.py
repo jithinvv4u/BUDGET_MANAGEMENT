@@ -19,6 +19,8 @@ class Account(models.Model):
     def __str__(self):
         return self.account_type
 
+    def balance_amount():
+        pass
 
 class Income(models.Model):
     INCOME_CHOICE = (
@@ -65,3 +67,9 @@ class Expense(models.Model):
 
     # def __str__(self):
     #     return self.account_type,self.user_id.name
+    
+
+# today=datetime.date.today()
+# total=Income.objects.aggregate(Sum('income_amount'))
+# Income.objects.filter(income_date__year=today.year,income_date__month=today.month).values('income_category').annotate(Sum('income_amount'),percent=F('income_amount__sum') / total['income_amount__sum'] * 100 )
+
