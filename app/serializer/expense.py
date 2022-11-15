@@ -8,7 +8,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
         """Meta info."""
 
         model = Expense
-        fields = ['account_type','expense_date','expense_category','expense_amount','expense_note']
+        fields = ['id','account_type','expense_date','expense_category','expense_amount','expense_note']
 
     def save(self, **kwargs):
         kwargs['user'] = self.context['request'].user

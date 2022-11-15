@@ -25,27 +25,19 @@ class SignupSerializer(serializers.ModelSerializer):
     #     return super().update(instance, validated_data)
 
 
-class LoginSerializer(serializers.Serializer):
-    """Serializer to login."""
+# class LoginSerializer(serializers.Serializer):
+#     """Serializer to login."""
 
-    phone_number = serializers.CharField()
-    password = serializers.CharField()
+#     phone_number = serializers.CharField()
+#     password = serializers.CharField()
 
-    def create(self, validated_data):
-        """Overriding the create method."""
-        user = authenticate(
-            phone_number=validated_data['phone_number'],
-            password=validated_data['password'])
-        if not user:
-            raise UnauthorizedAccess('Invalid phone number or password')
+#     def create(self, validated_data):
+#         """Overriding the create method."""
+#         user = authenticate(request=self.context.get('request'),
+#             phone_number=validated_data['phone_number'],
+#             password=validated_data['password'])
+#         if not user:
+#             raise UnauthorizedAccess('Invalid phone number or password')
 
-        return user
+#         return user
 
-    # def to_representation(self, obj):
-    #     """Overriding the value returned when returning the
-    #     serializer."""
-    #     data = {
-    #         'token': obj.issue_access_token(),
-    #         'id': obj.id,
-    #     }
-    #     return data
