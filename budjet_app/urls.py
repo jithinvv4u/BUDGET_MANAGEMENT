@@ -20,9 +20,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('accounts.urls')),
-    path('app/', include('app.urls')),
-    path('dashboard/', include('dashboard.urls')),
+    path('v1/', include('v1.accounts.urls')),
+    path('v1/finance/', include('v1.finance.urls')),
+    path('v1/dashboard/', include('v1.dashboard.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
