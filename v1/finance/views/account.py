@@ -6,6 +6,8 @@ from v1.finance import models as app_models
 
 
 class AccountViewSet(ModelViewSet):
+    """ViewSet to create and update account"""
+    
     permission_classes = (permissions.IsAuthenticated,)
     queryset = app_models.Account.objects.all()
     serializer_class = account_serializer.AccountSerializer

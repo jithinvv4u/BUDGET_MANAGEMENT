@@ -7,6 +7,8 @@ from v1.finance import filters as app_filters
 
 
 class ExpenseViewSet(ModelViewSet):
+    """Viewset to create expense"""
+
     permission_classes = (permissions.IsAuthenticated,)
     queryset = app_models.Expense.objects.all()
     serializer_class = expense_serializer.ExpenseSerializer
@@ -14,10 +16,14 @@ class ExpenseViewSet(ModelViewSet):
 
 
 class ExpenseListViewSet(ModelViewSet):
+    """Viewset to view list of expenses and update them"""
+
     permission_classes = (permissions.IsAuthenticated,)
     queryset = app_models.Expense.objects.all()
     serializer_class = expense_serializer.ExpenseSerializer
     filterset_class = app_filters.ExpenseFilter
 
     def get_queryset(self):
+        """queryset to get loggin user expense data"""
+        
         return app_models.Expense.objects.filter(user=self.request.user.id)

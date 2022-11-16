@@ -5,6 +5,8 @@ from v1.accounts.serializer import auth as auth_serializer
 
 
 class SignupViewSet(ModelViewSet):
+    """ViewSet used to create user"""
+    
     queryset = User.objects.all()
     serializer_class = auth_serializer.SignupSerializer
     http_method_names = ['post']

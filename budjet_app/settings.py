@@ -92,22 +92,22 @@ WSGI_APPLICATION = 'budjet_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config.get('database', 'DB_NAME'),
-#         'USER': config.get('database', 'DB_USER'),
-#         'PASSWORD': config.get('database', 'DB_PASSWORD'),
-#         'PORT': config.get('database', 'DB_PORT'),
-#         'HOST': config.get('database', 'DB_HOST'),
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config.get('database', 'DB_NAME'),
+        'USER': config.get('database', 'DB_USER'),
+        'PASSWORD': config.get('database', 'DB_PASSWORD'),
+        'PORT': config.get('database', 'DB_PORT'),
+        'HOST': config.get('database', 'DB_HOST'),
+    }
+}
 
 
 # Password validation
@@ -166,6 +166,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'accounts.User'
 
-HASHID_SALT = "Salt key"
+HASHID_SALT = config.get('django', 'HASHID_SALT')
 HASHID_MIN_LENGTH = 10
 HASHID_ALPHABETS = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"

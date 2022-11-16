@@ -7,7 +7,8 @@ from v1.accounts import permissions as app_permissions
 
 
 class UserViewSet(ModelViewSet):
+    """ViewSet used to list and update user"""
+    
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = User.objects.all()
     serializer_class = user_serializer.UserSerializer
-    # http_method_names = ['get', 'patch','put']
