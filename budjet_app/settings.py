@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #libraries
     'rest_framework',
     'rest_framework_simplejwt',
     'django_filters',
+    
+    #v1
     'accounts',
     'app',
     'dashboard',
