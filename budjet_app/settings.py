@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from configparser import RawConfigParser
 
+"""secret file data"""
 PROJECT_NAME = 'budget_app'
 SECRETS_DIR = Path('/etc/secret') / PROJECT_NAME
 SECRET_FILE = SECRETS_DIR / 'secret.ini'
@@ -29,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qqjlihn(h5vj4#-x^+xxm^v6)w_bwn512+z7-t)!jn%_=%7*19'
+SECRET_KEY = config.get('django', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -98,6 +99,8 @@ WSGI_APPLICATION = 'budjet_app.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+"""postgresql database connection"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -166,6 +169,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'accounts.User'
 
+"""hashid constant for idencode"""
 HASHID_SALT = config.get('django', 'HASHID_SALT')
 HASHID_MIN_LENGTH = 10
 HASHID_ALPHABETS = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
